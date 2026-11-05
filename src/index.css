@@ -1,0 +1,30 @@
+@import "tailwindcss";
+@config "../tailwind.config.js";
+
+.hex-shape {
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+}
+
+.hex-border-wrap {
+  filter: drop-shadow(0 2px 4px rgba(2, 12, 76, 0.12));
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hex-border-wrap.active-hex {
+  filter: drop-shadow(0 4px 14px rgba(2, 12, 76, 0.45)) drop-shadow(0 0 2px rgba(2, 12, 76, 0.7));
+  transform: translateY(-2px) scale(1.05);
+}
+
+.hex-border-wrap:hover:not(.active-hex) {
+  filter: drop-shadow(0 4px 8px rgba(2, 12, 76, 0.25));
+  transform: translateY(-2px) scale(1.02);
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
