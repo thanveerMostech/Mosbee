@@ -64,15 +64,7 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-8 border-t border-slate-200 flex flex-col md:flex-row items-center justify-between text-xs font-mono text-slate-500 gap-4">
-          <div>
-            © 2026 Mosbee Systems. All rights reserved. Built for businesses that would rather run their company than run their software.
-          </div>
-          <div className="flex items-center space-x-2 text-[11px] text-[#020c4c] font-bold">
-            <span className="w-2 h-2 rounded-full bg-[#020c4c] animate-pulse"></span>
-            <span>ALL CLUSTERS OPERATIONAL</span>
-          </div>
-        </div>
+
       </div>
     </footer>
   );

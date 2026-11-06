@@ -38,9 +38,9 @@ export default function PricingSection({ selectedProducts, onToggleProduct, onSt
         </p>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
         {/* Complete Suite Card */}
-        <div className="lg:col-span-6 bg-white border-2 border-[#020c4c] rounded-3xl p-8 relative overflow-hidden shadow-xl flex flex-col justify-between">
+        <div className="lg:col-span-6 h-full bg-white border-2 border-[#020c4c] rounded-3xl p-8 relative overflow-hidden shadow-xl flex flex-col justify-between">
           <div className="absolute top-0 right-0">
             <span className="inline-block bg-[#020c4c] text-white text-xs font-mono font-bold px-4 py-1.5 rounded-bl-xl shadow-sm">
               BEST VALUE
@@ -154,10 +154,44 @@ export default function PricingSection({ selectedProducts, onToggleProduct, onSt
                   <strong className="text-slate-900">Quarterly business review</strong> and roadmap input
                 </span>
               </li>
+              <li className="flex items-start space-x-3">
+                <span className="material-symbols-outlined text-[#020c4c] text-[18px] shrink-0 mt-0.5">
+                  verified
+                </span>
+                <span>
+                  <strong className="text-slate-900">POS &amp; statutory compliance:</strong> GST e-invoicing, e-way bills, PF, ESI and TDS built in
+                </span>
+              </li>
+              <li className="flex items-start space-x-3">
+                <span className="material-symbols-outlined text-[#020c4c] text-[18px] shrink-0 mt-0.5">
+                  verified
+                </span>
+                <span>
+                  <strong className="text-slate-900">Unlimited cross-module workflows</strong>, REST API access and real-time webhooks
+                </span>
+              </li>
             </ul>
           </div>
 
-          <div>
+          <div className="pt-6 border-t border-slate-200">
+            <div className="p-4 rounded-xl bg-[#020c4c] border border-[#020c4c] text-white flex items-center justify-between mb-4 shadow-md">
+              <div>
+                <span className="font-mono text-xs text-blue-200 block font-bold">
+                  BUNDLE SAVINGS VS. INDIVIDUAL MODULES
+                </span>
+                <span className="text-xs text-blue-300">
+                  All 8 modules bought separately cost ₹5,842 / user / mo
+                </span>
+              </div>
+              <div className="text-2xl sm:text-3xl font-extrabold text-white font-mono shrink-0 ml-3">
+                Save {billingCycle === 'annual' ? '57%' : '49%'}
+              </div>
+            </div>
+
+            <div className="text-xs font-mono text-slate-600 mb-4">
+              You save <strong className="text-slate-900 font-bold">₹{(5842 - bundleMonthlyPrice).toLocaleString('en-IN')}</strong> per user / month with the Complete Suite.
+            </div>
+
             <a
               href="#demo-section"
               className="w-full py-4 bg-[#020c4c] hover:bg-[#020c4c]/90 text-white font-mono font-bold text-center block rounded-xl transition-all shadow-md shadow-[#020c4c]/20 active:scale-95"
@@ -171,7 +205,7 @@ export default function PricingSection({ selectedProducts, onToggleProduct, onSt
         </div>
 
         {/* Build Your Own Configurator */}
-        <div className="lg:col-span-6 bg-white border border-slate-200 rounded-3xl p-8 flex flex-col justify-between shadow-sm">
+        <div className="lg:col-span-6 h-full bg-white border-2 border-slate-200 rounded-3xl p-8 flex flex-col justify-between shadow-xl">
           <div>
             <div className="mb-4">
               <h3 className="text-2xl font-bold text-slate-900">Build your own</h3>
@@ -237,11 +271,11 @@ export default function PricingSection({ selectedProducts, onToggleProduct, onSt
             <a
               href="#demo-section"
               onClick={() => onStartPilotWithPlan && onStartPilotWithPlan()}
-              className="w-full py-3.5 bg-slate-900 hover:bg-[#020c4c] text-white font-mono font-bold text-center block rounded-xl transition-all shadow-sm active:scale-95"
+              className="w-full py-4 bg-[#020c4c] hover:bg-[#020c4c]/90 text-white font-mono font-bold text-center block rounded-xl transition-all shadow-md shadow-[#020c4c]/20 active:scale-95"
             >
               Get my custom quote
             </a>
-            <p className="font-mono text-[11px] text-slate-500 text-center mt-3">
+            <p className="font-mono text-xs text-slate-500 text-center mt-3 font-medium">
               Volume pricing above 25 users. Non-profit and education pricing available.
             </p>
           </div>
