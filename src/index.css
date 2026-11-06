@@ -28,3 +28,131 @@
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
+/* ==========================================================================
+   Section-Level Contextual Backgrounds & Contrast Overlays
+   (Inspired by mosbee.vercel.app — Zero Component Internals Modified)
+   ========================================================================== */
+
+/* Allow container backgrounds to show through Pricing & Demo sections */
+#pricing-section,
+#demo-section {
+  background-color: transparent !important;
+}
+
+/* 1. HERO DARK VIDEO STAGE OVERLAY & CONTRAST */
+.section-bg-overlay-hero-dark {
+  background:
+    linear-gradient(90deg, rgba(2, 12, 76, 0.45) 0%, rgba(2, 12, 76, 0.28) 50%, rgba(2, 12, 76, 0.45) 100%),
+    linear-gradient(180deg, rgba(2, 12, 76, 0.42) 0%, rgba(2, 12, 76, 0.20) 50%, rgba(2, 12, 76, 0.55) 100%);
+}
+
+.hero-ambient-glow-left {
+  background: radial-gradient(circle, rgba(56, 189, 248, 0.22) 0%, rgba(2, 12, 76, 0.12) 45%, transparent 70%);
+  filter: blur(70px);
+}
+
+.hero-ambient-glow-right {
+  background: radial-gradient(ellipse at 80% 80%, rgba(56, 189, 248, 0.18) 0%, transparent 70%);
+  filter: blur(60px);
+}
+
+/* Scope Hero typography to crisp white over the dark video stage without editing Hero.jsx */
+.hero-stage-wrapper h1 {
+  color: #ffffff !important;
+  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.85);
+}
+
+.hero-stage-wrapper h1 span {
+  color: #38bdf8 !important;
+}
+
+.hero-stage-wrapper p {
+  color: #e2e8f0 !important;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.75);
+}
+
+.hero-stage-wrapper .font-mono {
+  color: #cbd5e1 !important;
+}
+
+.hero-stage-wrapper strong {
+  color: #ffffff !important;
+}
+
+.hero-stage-wrapper .material-symbols-outlined {
+  color: #38bdf8 !important;
+}
+
+.hero-stage-wrapper a[href="#pricing-section"] {
+  border: 1px solid rgba(56, 189, 248, 0.55);
+  box-shadow: 0 4px 22px rgba(0, 0, 0, 0.45), 0 0 18px rgba(56, 189, 248, 0.25);
+}
+
+.hero-stage-wrapper a[href="#pricing-section"] .material-symbols-outlined {
+  color: #ffffff !important;
+}
+
+/* 2. LIGHT ARCHITECTURAL IMAGE STAGE OVERLAY (Edge-Reveal + Crisp Center Contrast) */
+.section-bg-overlay-light-edge {
+  background:
+    linear-gradient(90deg, rgba(244, 246, 251, 0.55) 0%, rgba(255, 255, 255, 0.84) 22%, rgba(255, 255, 255, 0.84) 78%, rgba(244, 246, 251, 0.55) 100%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.90) 0%, rgba(244, 246, 251, 0.68) 50%, rgba(255, 255, 255, 0.90) 100%);
+  backdrop-filter: blur(1px);
+}
+
+/* 3. DEEP NAVY ARCHITECTURAL STAGE OVERLAY (Pricing & Integrations) */
+.section-bg-overlay-navy {
+  background:
+    radial-gradient(circle at 15% 20%, rgba(26, 75, 168, 0.42) 0%, transparent 45%),
+    radial-gradient(circle at 85% 80%, rgba(56, 189, 248, 0.16) 0%, transparent 45%),
+    linear-gradient(135deg, rgba(5, 0, 34, 0.86) 0%, rgba(2, 12, 76, 0.82) 50%, rgba(8, 27, 78, 0.86) 100%);
+  backdrop-filter: blur(1.5px);
+}
+
+.section-dot-grid {
+  opacity: 0.05;
+  background-image: radial-gradient(#38bdf8 1px, transparent 1px);
+  background-size: 36px 36px;
+}
+
+/* Scope Pricing section top header text to white over the navy backdrop while keeping white cards untouched */
+.pricing-stage-wrapper #pricing-section > div:first-child .font-mono {
+  color: #38bdf8 !important;
+}
+
+.pricing-stage-wrapper #pricing-section > div:first-child h2 {
+  color: #ffffff !important;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.5);
+}
+
+.pricing-stage-wrapper #pricing-section > div:first-child p {
+  color: #dbeafe !important;
+}
+
+/* Scope Integrations left-column copy to white over the navy server backdrop while keeping right card untouched */
+.integrations-stage-wrapper #integrations-section .lg\:col-span-6:first-child > .font-mono {
+  color: #38bdf8 !important;
+}
+
+.integrations-stage-wrapper #integrations-section .lg\:col-span-6:first-child h2,
+.integrations-stage-wrapper #integrations-section .lg\:col-span-6:first-child strong {
+  color: #ffffff !important;
+}
+
+.integrations-stage-wrapper #integrations-section .lg\:col-span-6:first-child p,
+.integrations-stage-wrapper #integrations-section .lg\:col-span-6:first-child span:not(.material-symbols-outlined) {
+  color: #dbeafe !important;
+}
+
+.integrations-stage-wrapper #integrations-section .lg\:col-span-6:first-child .material-symbols-outlined {
+  color: #38bdf8 !important;
+}
+
+/* 4. DEMO / CTA STAGE OVERLAY */
+.section-bg-overlay-cta {
+  background:
+    linear-gradient(90deg, rgba(244, 246, 251, 0.50) 0%, rgba(255, 255, 255, 0.78) 25%, rgba(255, 255, 255, 0.78) 75%, rgba(244, 246, 251, 0.50) 100%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.88) 0%, rgba(2, 12, 76, 0.18) 50%, rgba(248, 250, 252, 0.90) 100%);
+  backdrop-filter: blur(1px);
+}

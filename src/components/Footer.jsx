@@ -1,4 +1,5 @@
 import React from 'react';
+import { Hexagon } from 'lucide-react';
 
 export default function Footer() {
   return (
@@ -7,13 +8,11 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 mb-12">
           {/* Brand Info */}
           <div className="lg:col-span-2">
-            <a href="#" className="flex items-center space-x-2 mb-4 text-base font-bold text-slate-900 group">
-              <div className="w-7 h-7 rounded-lg bg-[#020c4c] border border-[#020c4c] flex items-center justify-center text-white group-hover:bg-[#020c4c]/90 transition-colors">
-                <span className="material-symbols-outlined text-[18px]">hub</span>
+            <a href="#" className="flex items-center space-x-2.5 mb-4 text-lg font-bold tracking-tight text-slate-900 group">
+              <div className="w-9 h-9 rounded-xl bg-[#020c4c] border border-[#020c4c] flex items-center justify-center text-white shadow-sm group-hover:bg-[#020c4c]/90 transition-colors">
+                <Hexagon size={20} className="text-white" strokeWidth={2.2} />
               </div>
-              <span className="font-extrabold tracking-tight">
-                MOSBEE <span className="font-mono text-[#020c4c] text-[10px] font-bold">BUSINESS OS</span>
-              </span>
+              <span className="tracking-wider font-extrabold text-slate-900 text-xl">MOSBEE</span>
             </a>
             <p className="text-sm text-slate-600 max-w-sm mb-6 leading-relaxed">
               One platform for operations, finance, sales, people, projects and support. Take the bundle or build your own — either way it runs on the same core.

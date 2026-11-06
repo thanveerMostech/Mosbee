@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Hexagon, ArrowRight, Menu, X } from 'lucide-react';
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -23,7 +24,7 @@ export default function Navbar() {
         {/* Brand Logo - MOSBEE only */}
         <a href="#" className="flex items-center space-x-2.5 text-lg font-bold tracking-tight text-slate-900 group">
           <div className="w-9 h-9 rounded-xl bg-[#020c4c] border border-[#020c4c] flex items-center justify-center text-white shadow-sm group-hover:bg-[#020c4c]/90 transition-colors">
-            <span className="material-symbols-outlined text-[20px]">hub</span>
+            <Hexagon size={20} className="text-white" strokeWidth={2.2} />
           </div>
           <span className="tracking-wider font-extrabold text-slate-900 text-xl">MOSBEE</span>
         </a>
@@ -55,7 +56,7 @@ export default function Navbar() {
             className="bg-[#020c4c] hover:bg-[#020c4c]/90 text-white font-medium text-sm px-5 py-2.5 rounded-xl transition-all shadow-sm active:scale-95 flex items-center space-x-1.5"
           >
             <span>Get started</span>
-            <span className="material-symbols-outlined text-[16px]">arrow_forward</span>
+            <ArrowRight size={16} />
           </a>
         </div>
 
@@ -72,9 +73,7 @@ export default function Navbar() {
             className="p-2 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-100 focus:outline-none cursor-pointer"
             aria-label="Toggle navigation menu"
           >
-            <span className="material-symbols-outlined text-[24px]">
-              {mobileMenuOpen ? 'close' : 'menu'}
-            </span>
+            {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
       </div>

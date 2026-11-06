@@ -11,6 +11,49 @@ import FaqSection from './components/FaqSection';
 import DemoSection from './components/DemoSection';
 import Footer from './components/Footer';
 
+/**
+ * ============================================================================
+ * SWAP-READY PAGE BACKGROUND ASSETS (Container-Level Only)
+ * Every section uses a distinct visual asset. Replace any URL below to swap.
+ * ============================================================================
+ */
+const BACKGROUND_ASSETS = {
+  // 1. HERO SECTION (Local Video from C:\Program Files\Downloads\gemini_generated_video_8d7e3737.mp4)
+  heroVideoMp4: '/images/gemini_generated_video_8d7e3737.mp4',
+  heroVideoFallbackMp4:
+    'https://assets.mixkit.co/videos/preview/mixkit-digital-animation-of-screens-and-data-9970-large.mp4',
+  heroPosterImg: '/images/erp.webp',
+
+  // 2. CONNECTED CORE / HONEYCOMB SHOWCASE (Image)
+  // Depicts: Global interconnected network topology & unified data bus
+  coreArchitectureBgImg:
+    'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1920&q=80',
+
+  // 3. SUITE SECTION -> Excluded completely (no wrapper, no background)
+
+  // 4. PRICING & MODULAR CONFIGURATOR (Image)
+  // Depicts: Executive financial planning, analytics & modular ROI strategy
+  pricingBgImg:
+    'https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=1920&q=80',
+
+  // 5. WHY THE BUNDLE WINS (Image)
+  // Depicts: Synchronized cross-department enterprise operations floor
+  whyBundleBgImg:
+    'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1920&q=80',
+
+  // 6. INTEGRATIONS SECTION -> Uses Gemini_Generated_Image_jc16tpjc16tpjc16.png inside IntegrationsSection.jsx
+
+  // 7. FAQ SECTION (Image)
+  // Depicts: Dependable enterprise onboarding & 24/7 customer advisory team
+  faqBgImg:
+    'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1920&q=80',
+
+  // 8. DEMO / 14-DAY PILOT SECTION (Image)
+  // Depicts: Executive boardroom walkthrough & live pilot deployment session
+  demoBgImg:
+    'https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1920&q=80',
+};
+
 export default function App() {
   const [selectedProducts, setSelectedProducts] = useState({
     ERP: false,
@@ -31,9 +74,16 @@ export default function App() {
   };
 
   const handleAddToPlan = (productName) => {
+    const keyMap = {
+      'Accounts & POS': 'Account Management',
+      Accounts: 'Account Management',
+      Projects: 'Project Management',
+      Tasks: 'Task Management',
+    };
+    const mappedName = keyMap[productName] || productName;
     setSelectedProducts((prev) => ({
       ...prev,
-      [productName]: true,
+      [mappedName]: true,
     }));
     const pricingEl = document.getElementById('pricing-section');
     if (pricingEl) {
@@ -55,37 +105,96 @@ export default function App() {
 
       {/* Main Content Area */}
       <main className="relative overflow-hidden bg-white flex-grow">
-        {/* Subtle ambient deep navy gradient backdrop */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1100px] h-[500px] bg-gradient-to-b from-[#020c4c]/10 via-[#020c4c]/5 to-transparent blur-3xl pointer-events-none -z-10"></div>
+        {/* 1. HERO STAGE — High-Impact Full-Bleed Video Background */}
+        <div className="hero-stage-wrapper relative w-full overflow-hidden bg-[#020c4c] border-b border-[#020c4c]/40">
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="auto"
+            poster={BACKGROUND_ASSETS.heroPosterImg}
+            className="absolute inset-0 w-full h-full object-cover object-center pointer-events-none select-none z-0"
+          >
+            <source src={BACKGROUND_ASSETS.heroVideoMp4} type="video/mp4" />
+            <source src={BACKGROUND_ASSETS.heroVideoFallbackMp4} type="video/mp4" />
+          </video>
+          {/* Dark gradient overlay on top of the video for crisp Hero text legibility */}
+          <div className="section-bg-overlay-hero-dark absolute inset-0 pointer-events-none z-0"></div>
+          <div className="hero-ambient-glow-left absolute left-[5%] top-1/4 w-[500px] h-[500px] rounded-full pointer-events-none z-0"></div>
+          <div className="hero-ambient-glow-right absolute right-[5%] bottom-0 w-[550px] h-[420px] rounded-full pointer-events-none z-0"></div>
 
-        {/* Hero Section Container */}
-        <section className="max-w-7xl mx-auto px-6 pt-12 pb-16 lg:pt-16 lg:pb-20">
-          <Hero />
-          <HoneycombShowcase />
-          <TrustTicker />
-        </section>
+          <section className="relative z-10 max-w-7xl mx-auto px-6 pt-16 pb-16 lg:pt-24 lg:pb-24">
+            <Hero />
+          </section>
+        </div>
 
-        {/* 8 Products Catalog */}
+        {/* 2. CONNECTED CORE STAGE — Honeycomb Architecture & Trust Ticker */}
+        <div
+          className="core-stage-wrapper relative w-full bg-cover bg-center bg-no-repeat border-b border-slate-200"
+          style={{ backgroundImage: `url('${BACKGROUND_ASSETS.coreArchitectureBgImg}')` }}
+        >
+          <div className="section-bg-overlay-light-edge absolute inset-0 pointer-events-none z-0"></div>
+          <section className="relative z-10 max-w-7xl mx-auto px-6 pt-6 pb-16 lg:pt-8 lg:pb-20">
+            <HoneycombShowcase />
+            <TrustTicker />
+          </section>
+        </div>
+
+        {/* 3. SUITE SECTION — Completely Excluded (No Wrapper, No Background, Untouched) */}
         <SuiteSection onAddToPlan={handleAddToPlan} />
 
-        {/* Pricing & Custom Configurator */}
-        <PricingSection
-          selectedProducts={selectedProducts}
-          onToggleProduct={handleToggleProduct}
-          onStartPilotWithPlan={handleStartPilotWithPlan}
-        />
+        {/* 4. WHY BUNDLE STAGE — Unified Enterprise Workspace Backdrop */}
+        <div
+          className="why-bundle-stage-wrapper relative w-full bg-cover bg-center bg-no-repeat"
+          style={{ backgroundImage: `url('${BACKGROUND_ASSETS.whyBundleBgImg}')` }}
+        >
+          <div className="section-bg-overlay-light-edge absolute inset-0 pointer-events-none z-0"></div>
+          <div className="relative z-10">
+            <WhyBundle />
+          </div>
+        </div>
 
-        {/* Why The Bundle Wins */}
-        <WhyBundle />
-
-        {/* Integrations & Security */}
+        {/* 5. INTEGRATIONS SECTION — Unified 6-Product Visual Showcase */}
         <IntegrationsSection />
 
-        {/* FAQ Accordion */}
-        <FaqSection />
+        {/* 6. PRICING STAGE — Deep Navy Modular Freedom & Financial Strategy Backdrop */}
+        <div
+          className="pricing-stage-wrapper relative w-full bg-cover bg-center bg-no-repeat"
+          style={{ backgroundImage: `url('${BACKGROUND_ASSETS.pricingBgImg}')` }}
+        >
+          <div className="section-bg-overlay-navy absolute inset-0 pointer-events-none z-0"></div>
+          <div className="section-dot-grid absolute inset-0 pointer-events-none z-0"></div>
+          <div className="relative z-10">
+            <PricingSection
+              selectedProducts={selectedProducts}
+              onToggleProduct={handleToggleProduct}
+              onStartPilotWithPlan={handleStartPilotWithPlan}
+            />
+          </div>
+        </div>
 
-        {/* Demo / Lead Capture */}
-        <DemoSection initialSelectedProducts={selectedProducts} />
+        {/* 7. FAQ STAGE — Guided Onboarding & 24/7 Support Consultation Backdrop */}
+        <div
+          className="faq-stage-wrapper relative w-full bg-cover bg-center bg-no-repeat"
+          style={{ backgroundImage: `url('${BACKGROUND_ASSETS.faqBgImg}')` }}
+        >
+          <div className="section-bg-overlay-light-edge absolute inset-0 pointer-events-none z-0"></div>
+          <div className="relative z-10">
+            <FaqSection />
+          </div>
+        </div>
+
+        {/* 8. DEMO / PILOT STAGE — Executive Boardroom & Live Pilot Deployment Backdrop */}
+        <div
+          className="demo-stage-wrapper relative w-full bg-cover bg-center bg-no-repeat"
+          style={{ backgroundImage: `url('${BACKGROUND_ASSETS.demoBgImg}')` }}
+        >
+          <div className="section-bg-overlay-cta absolute inset-0 pointer-events-none z-0"></div>
+          <div className="relative z-10">
+            <DemoSection initialSelectedProducts={selectedProducts} />
+          </div>
+        </div>
       </main>
 
       {/* Footer */}
